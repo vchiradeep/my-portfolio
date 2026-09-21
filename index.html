@@ -3,24 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>V Chiradeep — Glassmorphic OS Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- External Dependencies: GSAP & Interact.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 <body>
 
-    <!-- Header Section: Name and Education -->
-    <header>
-        <h1>V chiradeep</h1>
-        <p><strong>Studying at:</strong> Sri venkatesa perumal college of engineering and technology</p>
+    <!-- Interactive Particle Background Canvas -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Glowing Background Light Orbs -->
+    <div class="bg-glow orb-1"></div>
+    <div class="bg-glow orb-2"></div>
+    <div class="bg-glow orb-3"></div>
+
+    <!-- Header Navigation Bar -->
+    <header class="os-navbar">
+        <div class="brand">
+            <span class="status-dot"></span>
+            <strong>V CHIRADEEP</strong>
+            <span class="role-badge">AI & Full-Stack</span>
+        </div>
+        <nav class="nav-links">
+            <button class="nav-btn magnetic-btn" data-target="window-hero">Header</button>
+            <button class="nav-btn magnetic-btn" data-target="window-about">About</button>
+            <button class="nav-btn magnetic-btn" data-target="window-projects">Projects</button>
+            <button class="nav-btn magnetic-btn" data-target="window-skills">Skills</button>
+            <button class="nav-btn magnetic-btn" data-target="window-achievements">Achievements</button>
+        </nav>
+        <button id="resetWorkspaceBtn" class="reset-btn magnetic-btn">⚡ Reset Grid</button>
     </header>
 
-    <hr>
+    <!-- Main Floating Workspace -->
+    <main class="workspace" id="workspace">
 
-    <!-- About Me Section -->
-    <section>
-        <h2>About Me</h2>
-        <p>Hello! I am a passionate student learning web development. I love building web applications using HTML, CSS, and JavaScript. Welcome to my portfolio site!</p>
-    </section>
+        <!-- HERO WINDOW -->
+        <section class="glass-window draggable-window" id="window-hero">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot maximize"></span>
+                </div>
+                <div class="window-title">hero_overview.sys</div>
+            </div>
+            <div class="window-content">
+                <div class="hero-badge">OPEN TO OPPORTUNITIES</div>
+                <h1 class="hero-title">V Chiradeep</h1>
+                <p class="hero-subtitle">Aspiring AI & Full-Stack Developer | B.Tech CSE (AI) Student</p>
+                <p class="location-text">📍 Tirupati, Andhra Pradesh, India • Sri Venkatesa Perumal College of Engineering & Technology</p>
+                <div class="hero-tags">
+                    <span class="tag">React.js</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Supabase</span>
+                    <span class="tag">Generative AI</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT ME WINDOW -->
+        <section class="glass-window draggable-window" id="window-about">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot maximize"></span>
+                </div>
+                <div class="window-title">about_me.txt</div>
+            </div>
+            <div class="window-content">
+                <h2>About Me</h2>
+                <p class="bio-text">
+                    B.Tech CSE (AI) student and software developer specializing in full-stack engineering, system automation, and vulnerability management.
+                </p>
+                <ul class="bio-list">
+                    <li><strong>Core Tech:</strong> React.js, Node.js, Python, JavaScript, Supabase</li>
+                    <li><strong>Tools & Deployment:</strong> Git, VS Code, PowerShell, Vercel, Netlify</li>
+                    <li><strong>Focus:</strong> Building secure, scalable web applications and bridging artificial intelligence with practical, production-ready software systems.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PROJECTS WINDOW -->
+        <section class="glass-window draggable-window" id="window-projects">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot maximize"></span>
+                </div>
+                <div class="window-title">featured_projects.exec</div>
+            </div>
+            <div class="window-content">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+
+                    <!-- Project Card 1 -->
+                    <div class="project-card tilt-card">
+                        <div class="card-glow"></div>
+                        <span class="project-tag">AI / Full-Stack</span>
+                        <h3>ACE — AI Career Assistant</h3>
+                        <p>An all-in-one AI platform bringing job search, ATS resume analysis, interview preparation, and course discovery into a unified workflow.</p>
+                        <div class="tech-stack">
+                            <span>React.js</span>
+                            <span>Vite</span>
+                            <span>Firebase</span>
+                            <span>n8n</span>
+                            <span>Gemini API</span>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-card tilt-card">
+                        <div class="card-glow"></div>
+                        <span class="project-tag">Full-Stack Web App</span>
+                        <h3>Student Leave Management System</h3>
+                        <p>End-to-end leave request tracking system with automated letter generation, real-time status tracking, and role-based access control.</p>
+                        <div class="tech-stack">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Node.js</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS WINDOW -->
+        <section class="glass-window draggable-window" id="window-skills">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot maximize"></span>
+                </div>
+                <div class="window-title">technical_skills.json</div>
+            </div>
+            <div class="window-content">
+                <h2>Technical Arsenal</h2>
+                <div class="skills-category">
+                    <h4>Languages & Frameworks</h4>
+                    <div class="skill-pills">
+                        <span class="pill">C Language</span>
+                        <span class="pill">Python</span>
+                        <span class="pill">JavaScript (ES6+)</span>
+                        <span class="pill">React.js</span>
+                        <span class="pill">Node.js</span>
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <h4>Cloud & Backend</h4>
+                    <div class="skill-pills">
+                        <span class="pill">Firebase</span>
+                        <span class="pill">Supabase</span>
+                        <span class="pill">REST APIs</span>
+                        <span class="pill">n8n Automation</span>
+                    </div>
+                </div>
+                <div class="skills-category">
+                    <h4>Tools & Systems</h4>
+                    <div class="skill-pills">
+                        <span class="pill">Git & GitHub</span>
+                        <span class="pill">VS Code</span>
+                        <span class="pill">PowerShell</span>
+                        <span class="pill">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS WINDOW -->
+        <section class="glass-window draggable-window" id="window-achievements">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="dot close"></span>
+                    <span class="dot minimize"></span>
+                    <span class="dot maximize"></span>
+                </div>
+                <div class="window-title">achievements_log.key</div>
+            </div>
+            <div class="window-content">
+                <h2>Achievements & Events</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-badge">⭐ HackerRank</span>
+                        <h4>Earned 3rd Star in C Language</h4>
+                        <p>Strengthened core programming fundamentals, memory management, and low-level logic building.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-badge">📜 Workshop</span>
+                        <h4>2-Day LinkedIn Professional Workshop</h4>
+                        <p>Organized by SVPP College of Engineering & Technology; focused on personal branding and networking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
 </body>
-</html>
 </html>
