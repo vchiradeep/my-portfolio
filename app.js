@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PORTFOLIO ENGINE — TYPING EFFECT, PARTICLES & SCROLL TRIGGER
+   PORTFOLIO ENGINE — TYPING EFFECT, PARTICLES, SCROLL & FORM SUBMISSION
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initParticlesCanvas();
     initTabSwitcher();
     initScrollAnimations();
+    initContactForm();
 });
 
 /* --------------------------------------------------------------------------
@@ -14,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
    -------------------------------------------------------------------------- */
 function initTypingEffect() {
     const target = document.getElementById("typing-text");
+    if (!target) return;
+
     const phrases = [
         "Aspiring AI & Full-Stack Developer",
         "B.Tech CSE (AI) Student",
@@ -39,7 +42,7 @@ function initTypingEffect() {
         let speed = isDeleting ? 40 : 80;
 
         if (!isDeleting && charIndex === currentPhrase.length) {
-            speed = 2000; // Pause at end
+            speed = 2000;
             isDeleting = true;
         } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
@@ -58,8 +61,9 @@ function initTypingEffect() {
    -------------------------------------------------------------------------- */
 function initParticlesCanvas() {
     const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
+    if (!canvas) return;
 
+    const ctx = canvas.getContext('2d');
     let width, height;
     let particles = [];
     let mouse = { x: null, y: null, radius: 150 };
@@ -147,7 +151,8 @@ function initTabSwitcher() {
             contents.forEach(c => c.classList.remove('active'));
 
             btn.classList.add('active');
-            document.getElementById(`tab-${target}`).classList.add('active');
+            const activeContent = document.getElementById(`tab-${target}`);
+            if (activeContent) activeContent.classList.add('active');
         });
     });
 }
@@ -159,7 +164,6 @@ function initScrollAnimations() {
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
 
-        // Reveal section headers
         gsap.utils.toArray('.section-header').forEach(header => {
             gsap.from(header, {
                 scrollTrigger: {
@@ -173,7 +177,6 @@ function initScrollAnimations() {
             });
         });
 
-        // Reveal Cards with staggered entry
         gsap.utils.toArray('.glass-panel').forEach(panel => {
             gsap.from(panel, {
                 scrollTrigger: {
@@ -188,3 +191,45 @@ function initScrollAnimations() {
         });
     }
 }
+
+/* --------------------------------------------------------------------------
+   5. WEB3FORMS SUBMISSION (NO PAGE RELOAD)
+   -------------------------------------------------------------------------- */
+function initContactForm() {
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Thank you! Your message has been sent successfully.');
+                    contactForm.reset();
+                } else {
+                    alert('Oops! Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                alert('Error sending message. Please check your internet connection.');
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+} 
