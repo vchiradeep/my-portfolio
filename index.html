@@ -3,217 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V Chiradeep — AI & Full-Stack Engineer</title>
+    <title>V Chiradeep — Full-Stack & AI Engineer</title>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- External Dependencies: GSAP & FontAwesome -->
+    <!-- External Libraries & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="app.js" defer></script>
 </head>
 <body>
 
-    <!-- Particle Background Canvas -->
-    <canvas id="bgCanvas"></canvas>
+    <!-- Canvas Backgrounds -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Ambient Glass Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
 
-    <!-- Glowing Background Ambient Orbs -->
-    <div class="bg-glow orb-1"></div>
-    <div class="bg-glow orb-2"></div>
-    <div class="bg-glow orb-3"></div>
-
-    <!-- Sticky Glass Navigation -->
+    <!-- Navigation Header -->
     <header class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="brand">
-                <span class="status-dot"></span>
-                <strong>V CHIRADEEP</strong>
+            <a href="#hero" class="nav-brand">
+                <span class="status-indicator"></span>
+                <span class="brand-text">V CHIRADEEP</span>
             </a>
 
             <nav class="nav-links" id="navLinks">
-                <a href="#hero" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#achievements" class="nav-link">Achievements</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#hero" class="nav-item active">Home</a>
+                <a href="#about" class="nav-item">About</a>
+                <a href="#terminal" class="nav-item">Terminal</a>
+                <a href="#skills" class="nav-item">Skills</a>
+                <a href="#projects" class="nav-item">Projects</a>
+                <a href="#timeline" class="nav-item">Timeline</a>
+                <a href="#contact" class="nav-item">Contact</a>
             </nav>
 
-            <div class="nav-cta">
-                <a href="#contact" class="btn btn-outline">Let's Connect</a>
+            <div class="nav-actions">
+                <a href="#contact" class="btn btn-glow">
+                    <i class="fa-solid fa-paper-plane"></i> Hire Me
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- 1. HERO SECTION -->
-    <section class="section hero-section" id="hero">
-        <div class="container hero-content">
-            <div class="hero-badge">
-                <i class="fa-solid fa-circle-dot"></i> OPEN TO OPPORTUNITIES
-            </div>
-            
-            <h1 class="hero-title">
-                Hi, I'm <span class="gradient-text">V Chiradeep</span>
-            </h1>
-            
-            <h2 class="hero-subtitle">
-                <span id="typing-text"></span><span class="cursor">|</span>
-            </h2>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="main-wrapper">
 
-            <p class="hero-desc">
-                B.Tech CSE (AI) Student specializing in full-stack engineering, AI workflow integration, and scalable web solutions.
-            </p>
+        <!-- 1. HERO SECTION -->
+        <section class="hero-section" id="hero">
+            <div class="container hero-grid">
+                <div class="hero-text-content">
+                    <div class="badge-pill">
+                        <i class="fa-solid fa-sparkles"></i> AVAILABLE FOR ROLES
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Building Intelligent <br>
+                        <span class="gradient-text">Web Applications</span>
+                    </h1>
+                    
+                    <div class="typewriter-box">
+                        <span class="typewriter-prefix">> </span>
+                        <span id="typewriter"></span>
+                        <span class="cursor">|</span>
+                    </div>
 
-            <div class="hero-actions">
-                <a href="#projects" class="btn btn-primary">
-                    <i class="fa-solid fa-rocket"></i> View Projects
-                </a>
-                <a href="#contact" class="btn btn-glass">
-                    <i class="fa-solid fa-paper-plane"></i> Get In Touch
-                </a>
-            </div>
-
-            <!-- Stats Bar -->
-            <div class="hero-stats">
-                <div class="stat-card">
-                    <span class="stat-num">3★</span>
-                    <span class="stat-label">HackerRank C</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-num">2+</span>
-                    <span class="stat-label">Full-Stack Apps</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-num">B.Tech</span>
-                    <span class="stat-label">CSE (AI) Specialization</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. ABOUT ME SECTION -->
-    <section class="section about-section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">BACKGROUND</span>
-                <h2 class="section-title">About Me</h2>
-                <div class="title-bar"></div>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-card glass-panel">
-                    <h3><i class="fa-solid fa-user-gear"></i> Engineering Profile</h3>
-                    <p>
-                        I am an aspiring AI & Full-Stack Developer currently pursuing B.Tech in Computer Science & Engineering (Artificial Intelligence) at Sri Venkatesa Perumal College of Engineering & Technology, Tirupati.
+                    <p class="hero-description">
+                        B.Tech CSE (AI) Student specializing in full-stack web architectures, automated workflows, and practical AI models integration.
                     </p>
-                    <p>
-                        My work focuses on bridging artificial intelligence with modern web technologies, building secure backends, automated workflows, and production-ready applications.
-                    </p>
-                </div>
 
-                <div class="about-tabs-container glass-panel">
-                    <div class="tab-buttons">
-                        <button class="tab-btn active" data-tab="bg">Background</button>
-                        <button class="tab-btn" data-tab="workflow">Workflow</button>
-                        <button class="tab-btn" data-tab="goals">Goals</button>
+                    <div class="hero-btn-group">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Explore Work</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-glass">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>Get in Touch</span>
+                        </a>
                     </div>
 
-                    <div class="tab-content active" id="tab-bg">
-                        <ul>
-                            <li><strong>Location:</strong> Tirupati, Andhra Pradesh, India</li>
-                            <li><strong>Institution:</strong> Sri Venkatesa Perumal College of Engineering & Technology</li>
-                            <li><strong>Focus:</strong> Full-Stack Development, System Automation & Vulnerability Management</li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-content" id="tab-workflow">
-                        <ul>
-                            <li><strong>Tools:</strong> VS Code, Windows PowerShell, Git & GitHub</li>
-                            <li><strong>Deployment:</strong> Vercel, Netlify, Render, Firebase</li>
-                            <li><strong>Automation:</strong> n8n Workflow Automation, REST API Integrations</li>
-                        </ul>
-                    </div>
-
-                    <div class="tab-content" id="tab-goals">
-                        <ul>
-                            <li>Building intelligent, responsive web platforms for real-world utility.</li>
-                            <li>Mastering scalable microservices and deep AI model deployments.</li>
-                            <li>Contributing to open-source software and high-impact technology projects.</li>
-                        </ul>
+                    <div class="hero-stats-grid">
+                        <div class="stat-card glass-panel">
+                            <span class="stat-value">3★</span>
+                            <span class="stat-label">HackerRank C</span>
+                        </div>
+                        <div class="stat-card glass-panel">
+                            <span class="stat-value">2+</span>
+                            <span class="stat-label">Production Projects</span>
+                        </div>
+                        <div class="stat-card glass-panel">
+                            <span class="stat-value">CSE (AI)</span>
+                            <span class="stat-label">Specialization</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 3. TECHNICAL SKILLS SECTION -->
-    <section class="section skills-section" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">CAPABILITIES</span>
-                <h2 class="section-title">Technical Arsenal</h2>
-                <div class="title-bar"></div>
-            </div>
-
-            <div class="skills-grid">
-                <!-- Frontend -->
-                <div class="skill-card glass-panel">
-                    <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
-                    <h3>Frontend Development</h3>
-                    <ul class="skill-list">
-                        <li>React.js & Vite</li>
-                        <li>HTML5 & Modern CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Responsive UI / UX Design</li>
-                    </ul>
+        <!-- 2. ABOUT SECTION -->
+        <section class="section-padding" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag font-mono">// DISCOVER</span>
+                    <h2 class="section-title">About My Approach</h2>
+                    <div class="divider"></div>
                 </div>
 
-                <!-- Backend & Cloud -->
-                <div class="skill-card glass-panel">
-                    <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
-                    <h3>Backend & Database</h3>
-                    <ul class="skill-list">
-                        <li>Node.js & Express</li>
-                        <li>Python</li>
-                        <li>Supabase & Firebase</li>
-                        <li>RESTful APIs</li>
-                    </ul>
-                </div>
-
-                <!-- AI & Tools -->
-                <div class="skill-card glass-panel">
-                    <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
-                    <h3>AI & Automation</h3>
-                    <ul class="skill-list">
-                        <li>Google Gemini API</li>
-                        <li>n8n Workflow Automation</li>
-                        <li>PDF.js Text Extraction</li>
-                        <li>Git & PowerShell</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. FEATURED PROJECTS SECTION -->
-    <section class="section projects-section" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">PORTFOLIO</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="title-bar"></div>
-            </div>
-
-            <div class="projects-container">
-                <!-- Project 1 -->
-                <div class="project-card glass-panel tilt-card">
-                    <div class="project-content">
-                        <span class="project-badge">AI / FULL-STACK PLATFORM</span>
-                        <h3 class="project-title">ACE — AI Career Assistant</h3>
-                        <p class="project-desc">
-                            An all-in-one AI platform unifying job searches, ATS resume analysis, custom interview preparation, career roadmaps, and course discovery into a single interface.
+                <div class="about-grid">
+                    <div class="glass-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="card-header">
+                            <i class="fa-solid fa-microchip icon-accent"></i>
+                            <h3>Engineering Mindset</h3>
+                        </div>
+                        <p>
+                            I am a B.Tech Computer Science student specializing in Artificial Intelligence at Sri Venkatesa Perumal College of Engineering & Technology. My passion lies in engineering robust full-stack applications with dynamic user interfaces and scalable backends.
                         </p>
-                        <div class="project-tech">
+                        <p>
+                            From browser-side file parsing using PDF.js to building real-time tracking portals and automated workflows using n8n, I focus on building efficient, user-centric solutions.
+                        </p>
+                    </div>
+
+                    <div class="glass-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="tab-header">
+                            <button class="tab-btn active" data-tab="bg">Background</button>
+                            <button class="tab-btn" data-tab="stack">Tech Stack</button>
+                            <button class="tab-btn" data-tab="focus">Current Focus</button>
+                        </div>
+                        
+                        <div class="tab-body">
+                            <div class="tab-pane active" id="tab-bg">
+                                <ul class="check-list">
+                                    <li><i class="fa-solid fa-check text-cyan"></i> <strong>Location:</strong> Tirupati, Andhra Pradesh, India</li>
+                                    <li><i class="fa-solid fa-check text-cyan"></i> <strong>Education:</strong> B.Tech in CSE (AI)</li>
+                                    <li><i class="fa-solid fa-check text-cyan"></i> <strong>Primary Focus:</strong> Full-Stack & AI Systems</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" id="tab-stack">
+                                <ul class="check-list">
+                                    <li><i class="fa-solid fa-check text-purple"></i> <strong>Frontend:</strong> React.js, Vite, JavaScript, HTML5/CSS3</li>
+                                    <li><i class="fa-solid fa-check text-purple"></i> <strong>Backend:</strong> Node.js, Express, Python, REST APIs</li>
+                                    <li><i class="fa-solid fa-check text-purple"></i> <strong>Databases:</strong> Supabase, Firebase</li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane" id="tab-focus">
+                                <ul class="check-list">
+                                    <li><i class="fa-solid fa-check text-blue"></i> Deploying cloud AI microservices</li>
+                                    <li><i class="fa-solid fa-check text-blue"></i> Enhancing web application security & vulnerability awareness</li>
+                                    <li><i class="fa-solid fa-check text-blue"></i> Optimizing real-time web application workflows</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INTERACTIVE TERMINAL SECTION -->
+        <section class="section-padding" id="terminal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag font-mono">// COMMAND INTERFACE</span>
+                    <h2 class="section-title">Interactive Shell</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="terminal-container glass-card">
+                    <div class="terminal-bar">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">chiradeep@portfolio:~ (zsh)</span>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <div class="terminal-output">
+                            <p class="text-accent">Welcome to Chiradeep's Interactive Terminal CLI v2.0!</p>
+                            <p class="text-sub">Type <span class="text-cyan">'help'</span> to see a list of available commands.</p>
+                        </div>
+                        <div class="terminal-input-line">
+                            <span class="prompt">chiradeep@dev:~$</span>
+                            <input type="text" id="terminalInput" class="terminal-input" placeholder="type command here..." autofocus autocomplete="off" spellcheck="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SKILLS SECTION -->
+        <section class="section-padding" id="skills">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag font-mono">// CAPABILITIES</span>
+                    <h2 class="section-title">Technical Expertise</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="glass-card skill-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon-wrapper">
+                            <i class="fa-brands fa-react"></i>
+                        </div>
+                        <h3>Frontend Architecture</h3>
+                        <p>Designing modern, responsive user interfaces.</p>
+                        <div class="skill-tags">
+                            <span>React.js</span>
+                            <span>JavaScript (ES6+)</span>
+                            <span>HTML5 / CSS3</span>
+                            <span>Vite</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card skill-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon-wrapper">
+                            <i class="fa-brands fa-node-js"></i>
+                        </div>
+                        <h3>Backend & Cloud</h3>
+                        <p>Constructing REST APIs and database structures.</p>
+                        <div class="skill-tags">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>Python</span>
+                            <span>Supabase</span>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
+
+                    <div class="glass-card skill-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="skill-icon-wrapper">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3>AI & System Tools</h3>
+                        <p>Automating workflows and integrating AI models.</p>
+                        <div class="skill-tags">
+                            <span>Gemini API</span>
+                            <span>n8n Workflows</span>
+                            <span>PDF.js</span>
+                            <span>PowerShell</span>
+                            <span>Git / GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PROJECTS SECTION -->
+        <section class="section-padding" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag font-mono">// PORTFOLIO</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="glass-card project-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="project-header">
+                            <span class="project-category">AI / Full-Stack Platform</span>
+                            <h3 class="project-title">ACE — AI Career Assistant</h3>
+                        </div>
+                        <p class="project-desc">
+                            An integrated platform combining job aggregation, automated ATS resume screening, custom AI mock interview prep, and career path discovery.
+                        </p>
+                        <div class="project-highlight-box">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Engineered browser-side PDF text extraction using PDF.js to eliminate server-side upload timeout issues.</span>
+                        </div>
+                        <div class="skill-tags">
                             <span>React.js</span>
                             <span>Firebase</span>
                             <span>n8n</span>
@@ -221,133 +289,129 @@
                             <span>Render</span>
                             <span>PDF.js</span>
                         </div>
-                        <div class="project-highlights">
-                            <p><strong>Key Solution:</strong> Solved server-side upload timeouts by designing browser-side PDF text extraction using PDF.js before dispatching structured data to AI workflows.</p>
-                        </div>
                     </div>
-                </div>
 
-                <!-- Project 2 -->
-                <div class="project-card glass-panel tilt-card">
-                    <div class="project-content">
-                        <span class="project-badge">FULL-STACK WEB APP</span>
-                        <h3 class="project-title">Student Leave Management System</h3>
+                    <!-- Project 2 -->
+                    <div class="glass-card project-card tilt-card">
+                        <div class="card-glow"></div>
+                        <div class="project-header">
+                            <span class="project-category">Full-Stack Web App</span>
+                            <h3 class="project-title">Leave Management System</h3>
+                        </div>
                         <p class="project-desc">
-                            A role-based web application streamlining leave applications between students and faculty with real-time tracking and document generation.
+                            A role-based workflow web application facilitating seamless leave requests between students and faculty members.
                         </p>
-                        <div class="project-tech">
+                        <div class="project-highlight-box">
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <span>Features auto-formatting letter generators, approval status tracking, and structured backend views.</span>
+                        </div>
+                        <div class="skill-tags">
                             <span>HTML5</span>
                             <span>CSS3</span>
                             <span>JavaScript</span>
                             <span>Node.js</span>
-                        </div>
-                        <div class="project-highlights">
-                            <p><strong>Key Features:</strong> Auto-generated leave letter formatters, real-time approval status dashboard (Pending / Approved / Rejected), and responsive admin view.</p>
+                            <span>Express</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. ACHIEVEMENTS SECTION -->
-    <section class="section achievements-section" id="achievements">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">MILESTONES</span>
-                <h2 class="section-title">Achievements & Activities</h2>
-                <div class="title-bar"></div>
-            </div>
+        <!-- 6. TIMELINE SECTION -->
+        <section class="section-padding" id="timeline">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag font-mono">// MILESTONES</span>
+                    <h2 class="section-title">Achievements & Training</h2>
+                    <div class="divider"></div>
+                </div>
 
-            <div class="timeline">
-                <div class="timeline-item glass-panel">
-                    <div class="timeline-marker"><i class="fa-solid fa-star"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">HackerRank Milestone</span>
+                <div class="timeline-wrapper">
+                    <div class="timeline-item glass-card">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Coding Milestone</div>
                         <h3>Earned 3rd Star in C Language</h3>
-                        <p>
-                            Strengthened core programming fundamentals, memory management, and low-level logic building vital for building robust systems.
-                        </p>
+                        <p>Demonstrated proficiency in C programming fundamentals, pointer manipulations, memory management, and data structures on HackerRank.</p>
                     </div>
-                </div>
 
-                <div class="timeline-item glass-panel">
-                    <div class="timeline-marker"><i class="fa-solid fa-certificate"></i></div>
-                    <div class="timeline-content">
-                        <span class="timeline-date">Professional Growth</span>
-                        <h3>2-Day LinkedIn Workshop</h3>
-                        <p>
-                            Participated in an intensive professional development workshop hosted at Sri Venkatesa Perumal College of Engineering & Technology to master networking and personal branding.
-                        </p>
+                    <div class="timeline-item glass-card">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Professional Workshop</div>
+                        <h3>2-Day Intensive LinkedIn Workshop</h3>
+                        <p>Completed professional development training hosted at Sri Venkatesa Perumal College of Engineering & Technology focused on career networking and branding.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 6. CONTACT SECTION -->
-    <section class="section contact-section" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">CONNECT</span>
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="title-bar"></div>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info glass-panel">
-                    <h3>Let's collaborate on your next big idea!</h3>
-                    <p>Open for internships, entry-level developer roles, and technical collaborations.</p>
-                    
-                    <div class="info-list">
-                        <div class="info-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <span>Tirupati, Andhra Pradesh, India</span>
-                        </div>
-                        <div class="info-item">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <span>B.Tech CSE (Artificial Intelligence)</span>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="https://linkedin.com" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://github.com" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://hackerrank.com" target="_blank" class="social-btn"><i class="fa-solid fa-code"></i></a>
-                    </div>
+        <!-- 7. CONTACT SECTION -->
+        <section class="section-padding" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag font-mono">// GET IN TOUCH</span>
+                    <h2 class="section-title">Let's Connect</h2>
+                    <div class="divider"></div>
                 </div>
 
-                <div class="contact-form glass-panel">
-                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                <div class="contact-grid">
+                    <div class="glass-card contact-info">
+                        <h3>Start a Conversation</h3>
+                        <p>I am open to full-stack engineering internships, AI project opportunities, and technical collaborations.</p>
                         
-                        <!-- Web3Forms Token Key -->
-                        <input type="hidden" name="access_key" value="025aab34-8cd9-4bd1-af41-9193c3f01d6e">
-                        
-                        <!-- Email Subject Line -->
-                        <input type="hidden" name="subject" value="New Contact Form Submission from V Chiradeep Portfolio">
+                        <div class="info-items">
+                            <div class="info-row">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Tirupati, Andhra Pradesh, India</span>
+                            </div>
+                            <div class="info-row">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <span>B.Tech CSE (Artificial Intelligence)</span>
+                            </div>
+                        </div>
 
-                        <div class="form-group">
-                            <input type="text" name="name" id="name" placeholder="Your Name" required>
+                        <div class="social-grid">
+                            <a href="https://linkedin.com" target="_blank" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://github.com" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://hackerrank.com" target="_blank" class="social-link"><i class="fa-solid fa-code"></i></a>
                         </div>
-                        <div class="form-group">
-                            <input type="email" name="email" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" id="message" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Send Message <i class="fa-solid fa-paper-plane"></i>
-                        </button>
-                    </form>
+                    </div>
+
+                    <div class="glass-card contact-form-card">
+                        <form id="contactForm">
+                            <input type="hidden" name="access_key" value="025aab34-8cd9-4bd1-af41-9193c3f01d6e">
+                            <input type="hidden" name="subject" value="New Contact Form Submission from V Chiradeep Portfolio">
+
+                            <div class="input-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span>Send Message</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <p>© 2026 V Chiradeep. Crafted with Vanilla HTML/CSS/JS & GSAP animations.</p>
+        <div class="container footer-content">
+            <p>© 2026 V Chiradeep. Engineered with Modern Full-Stack Web Technologies.</p>
         </div>
     </footer>
 
