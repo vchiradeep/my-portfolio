@@ -1,5 +1,5 @@
 /* ==========================================================================
-   INTERACTIVE PORTFOLIO ENGINE — PARTICLES, TERMINAL & ANIMATIONS
+   INTERACTIVE PORTFOLIO ENGINE — PARTICLES & ANIMATIONS
    ========================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initTypewriter();
     initCardTilting();
     initTabSystem();
-    initTerminalCLI();
     initContactFormEngine();
     initScrollAnimations();
 });
@@ -208,56 +207,7 @@ function initTabSystem() {
 }
 
 /* --------------------------------------------------------------------------
-   5. INTERACTIVE TERMINAL CLI
-   -------------------------------------------------------------------------- */
-function initTerminalCLI() {
-    const input = document.getElementById("terminalInput");
-    const body = document.getElementById("terminalBody");
-
-    if (!input || !body) return;
-
-    const commands = {
-        help: "Available commands: <span class='text-accent'>about, skills, projects, contact, clear, whoami</span>",
-        about: "V Chiradeep — B.Tech CSE (AI) student in Tirupati focusing on Full-Stack Dev and AI Integration.",
-        skills: "React.js, Node.js, Express, Python, Supabase, Firebase, Gemini API, n8n Automation.",
-        projects: "1. ACE (AI Career Assistant)<br>2. Student Leave Management System",
-        contact: "Email form configured! Use the contact section below to reach out.",
-        whoami: "guest_user@chiradeep-portfolio"
-    };
-
-    input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            const cmd = input.value.trim().toLowerCase();
-            input.value = "";
-
-            const line = document.createElement("div");
-            line.className = "terminal-output-line";
-            line.innerHTML = `<p><span class="prompt">chiradeep@dev:~$</span> ${cmd}</p>`;
-            body.insertBefore(line, input.parentElement);
-
-            const response = document.createElement("div");
-            response.className = "terminal-response";
-
-            if (cmd === "clear") {
-                const outputs = body.querySelectorAll(".terminal-output-line, .terminal-response");
-                outputs.forEach(el => el.remove());
-                return;
-            }
-
-            if (commands[cmd]) {
-                response.innerHTML = `<p class="text-sub">${commands[cmd]}</p>`;
-            } else if (cmd !== "") {
-                response.innerHTML = `<p style="color: #ff5f56;">Command not found: '${cmd}'. Type 'help' for options.</p>`;
-            }
-
-            body.insertBefore(response, input.parentElement);
-            body.scrollTop = body.scrollHeight;
-        }
-    });
-}
-
-/* --------------------------------------------------------------------------
-   6. CONTACT FORM SUBMISSION (WEB3FORMS)
+   5. CONTACT FORM SUBMISSION (WEB3FORMS)
    -------------------------------------------------------------------------- */
 function initContactFormEngine() {
     const form = document.getElementById("contactForm");
@@ -299,7 +249,7 @@ function initContactFormEngine() {
 }
 
 /* --------------------------------------------------------------------------
-   7. SCROLL TRIGGER ANIMATIONS (GSAP)
+   6. SCROLL TRIGGER ANIMATIONS (GSAP)
    -------------------------------------------------------------------------- */
 function initScrollAnimations() {
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {

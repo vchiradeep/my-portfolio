@@ -439,82 +439,7 @@ body {
 .text-blue { color: var(--neon-blue); }
 
 /* --------------------------------------------------------------------------
-   9. INTERACTIVE TERMINAL
-   -------------------------------------------------------------------------- */
-.terminal-container {
-    padding: 0 !important;
-    background: rgba(5, 8, 17, 0.95);
-    border-color: rgba(0, 242, 254, 0.2);
-}
-
-.terminal-bar {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--border-glass);
-}
-
-.terminal-dots {
-    display: flex;
-    gap: 8px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
-
-.terminal-title {
-    margin-left: 20px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-muted);
-}
-
-.terminal-body {
-    padding: 25px;
-    font-family: var(--font-mono);
-    font-size: 14px;
-    min-height: 250px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.terminal-output p {
-    margin-bottom: 10px;
-}
-
-.text-accent { color: var(--neon-cyan); }
-.text-sub { color: var(--text-secondary); }
-
-.terminal-input-line {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.prompt {
-    color: var(--neon-green);
-}
-
-.terminal-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--text-primary);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    width: 100%;
-}
-
-/* --------------------------------------------------------------------------
-   10. SKILLS & PROJECTS
+   9. SKILLS & PROJECTS
    -------------------------------------------------------------------------- */
 .skills-grid {
     display: grid;
@@ -575,7 +500,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   11. TIMELINE
+   10. TIMELINE
    -------------------------------------------------------------------------- */
 .timeline-wrapper {
     max-width: 800px;
@@ -609,7 +534,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   12. CONTACT FORM & FOOTER
+   11. CONTACT FORM & FOOTER
    -------------------------------------------------------------------------- */
 .contact-grid {
     display: grid;
@@ -699,7 +624,7 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   13. RESPONSIVE MEDIA QUERIES
+   12. RESPONSIVE MEDIA QUERIES
    -------------------------------------------------------------------------- */
 @media (max-width: 992px) {
     .hero-title { font-size: 48px; }
