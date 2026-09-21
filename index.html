@@ -3,211 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V Chiradeep — Glassmorphic OS Portfolio</title>
+    <title>V Chiradeep — AI & Full-Stack Engineer</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- External Dependencies: GSAP & Interact.js -->
+    <!-- External Dependencies: GSAP & FontAwesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="app.js" defer></script>
 </head>
 <body>
 
-    <!-- Interactive Particle Background Canvas -->
+    <!-- Particle Background Canvas -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- Glowing Background Light Orbs -->
+    <!-- Glowing Background Ambient Orbs -->
     <div class="bg-glow orb-1"></div>
     <div class="bg-glow orb-2"></div>
     <div class="bg-glow orb-3"></div>
 
-    <!-- Header Navigation Bar -->
-    <header class="os-navbar">
-        <div class="brand">
-            <span class="status-dot"></span>
-            <strong>V CHIRADEEP</strong>
-            <span class="role-badge">AI & Full-Stack</span>
+    <!-- Sticky Glass Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="brand">
+                <span class="status-dot"></span>
+                <strong>V CHIRADEEP</strong>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-outline">Let's Connect</a>
+            </div>
         </div>
-        <nav class="nav-links">
-            <button class="nav-btn magnetic-btn" data-target="window-hero">Header</button>
-            <button class="nav-btn magnetic-btn" data-target="window-about">About</button>
-            <button class="nav-btn magnetic-btn" data-target="window-projects">Projects</button>
-            <button class="nav-btn magnetic-btn" data-target="window-skills">Skills</button>
-            <button class="nav-btn magnetic-btn" data-target="window-achievements">Achievements</button>
-        </nav>
-        <button id="resetWorkspaceBtn" class="reset-btn magnetic-btn">⚡ Reset Grid</button>
     </header>
 
-    <!-- Main Floating Workspace -->
-    <main class="workspace" id="workspace">
+    <!-- 1. HERO SECTION -->
+    <section class="section hero-section" id="hero">
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-circle-dot"></i> OPEN TO OPPORTUNITIES
+            </div>
+            
+            <h1 class="hero-title">
+                Hi, I'm <span class="gradient-text">V Chiradeep</span>
+            </h1>
+            
+            <h2 class="hero-subtitle">
+                <span id="typing-text"></span><span class="cursor">|</span>
+            </h2>
 
-        <!-- HERO WINDOW -->
-        <section class="glass-window draggable-window" id="window-hero">
-            <div class="window-header">
-                <div class="window-controls">
-                    <span class="dot close"></span>
-                    <span class="dot minimize"></span>
-                    <span class="dot maximize"></span>
-                </div>
-                <div class="window-title">hero_overview.sys</div>
-            </div>
-            <div class="window-content">
-                <div class="hero-badge">OPEN TO OPPORTUNITIES</div>
-                <h1 class="hero-title">V Chiradeep</h1>
-                <p class="hero-subtitle">Aspiring AI & Full-Stack Developer | B.Tech CSE (AI) Student</p>
-                <p class="location-text">📍 Tirupati, Andhra Pradesh, India • Sri Venkatesa Perumal College of Engineering & Technology</p>
-                <div class="hero-tags">
-                    <span class="tag">React.js</span>
-                    <span class="tag">Node.js</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Supabase</span>
-                    <span class="tag">Generative AI</span>
-                </div>
-            </div>
-        </section>
+            <p class="hero-desc">
+                B.Tech CSE (AI) Student specializing in full-stack engineering, AI workflow integration, and scalable web solutions.
+            </p>
 
-        <!-- ABOUT ME WINDOW -->
-        <section class="glass-window draggable-window" id="window-about">
-            <div class="window-header">
-                <div class="window-controls">
-                    <span class="dot close"></span>
-                    <span class="dot minimize"></span>
-                    <span class="dot maximize"></span>
-                </div>
-                <div class="window-title">about_me.txt</div>
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fa-solid fa-rocket"></i> View Projects
+                </a>
+                <a href="#contact" class="btn btn-glass">
+                    <i class="fa-solid fa-paper-plane"></i> Get In Touch
+                </a>
             </div>
-            <div class="window-content">
-                <h2>About Me</h2>
-                <p class="bio-text">
-                    B.Tech CSE (AI) student and software developer specializing in full-stack engineering, system automation, and vulnerability management.
-                </p>
-                <ul class="bio-list">
-                    <li><strong>Core Tech:</strong> React.js, Node.js, Python, JavaScript, Supabase</li>
-                    <li><strong>Tools & Deployment:</strong> Git, VS Code, PowerShell, Vercel, Netlify</li>
-                    <li><strong>Focus:</strong> Building secure, scalable web applications and bridging artificial intelligence with practical, production-ready software systems.</li>
-                </ul>
-            </div>
-        </section>
 
-        <!-- PROJECTS WINDOW -->
-        <section class="glass-window draggable-window" id="window-projects">
-            <div class="window-header">
-                <div class="window-controls">
-                    <span class="dot close"></span>
-                    <span class="dot minimize"></span>
-                    <span class="dot maximize"></span>
+            <!-- Stats Bar -->
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-num">3★</span>
+                    <span class="stat-label">HackerRank C</span>
                 </div>
-                <div class="window-title">featured_projects.exec</div>
+                <div class="stat-card">
+                    <span class="stat-num">2+</span>
+                    <span class="stat-label">Full-Stack Apps</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">B.Tech</span>
+                    <span class="stat-label">CSE (AI) Specialization</span>
+                </div>
             </div>
-            <div class="window-content">
-                <h2>Featured Projects</h2>
-                <div class="projects-grid">
+        </div>
+    </section>
 
-                    <!-- Project Card 1 -->
-                    <div class="project-card tilt-card">
-                        <div class="card-glow"></div>
-                        <span class="project-tag">AI / Full-Stack</span>
-                        <h3>ACE — AI Career Assistant</h3>
-                        <p>An all-in-one AI platform bringing job search, ATS resume analysis, interview preparation, and course discovery into a unified workflow.</p>
-                        <div class="tech-stack">
+    <!-- 2. ABOUT ME SECTION -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">BACKGROUND</span>
+                <h2 class="section-title">About Me</h2>
+                <div class="title-bar"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card glass-panel">
+                    <h3><i class="fa-solid fa-user-gear"></i> Engineering Profile</h3>
+                    <p>
+                        I am an aspiring AI & Full-Stack Developer currently pursuing B.Tech in Computer Science & Engineering (Artificial Intelligence) at Sri Venkatesa Perumal College of Engineering & Technology, Tirupati.
+                    </p>
+                    <p>
+                        My work focuses on bridging artificial intelligence with modern web technologies, building secure backends, automated workflows, and production-ready applications.
+                    </p>
+                </div>
+
+                <div class="about-tabs-container glass-panel">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="bg">Background</button>
+                        <button class="tab-btn" data-tab="workflow">Workflow</button>
+                        <button class="tab-btn" data-tab="goals">Goals</button>
+                    </div>
+
+                    <div class="tab-content active" id="tab-bg">
+                        <ul>
+                            <li><strong>Location:</strong> Tirupati, Andhra Pradesh, India</li>
+                            <li><strong>Institution:</strong> Sri Venkatesa Perumal College of Engineering & Technology</li>
+                            <li><strong>Focus:</strong> Full-Stack Development, System Automation & Vulnerability Management</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="tab-workflow">
+                        <ul>
+                            <li><strong>Tools:</strong> VS Code, Windows PowerShell, Git & GitHub</li>
+                            <li><strong>Deployment:</strong> Vercel, Netlify, Render, Firebase</li>
+                            <li><strong>Automation:</strong> n8n Workflow Automation, REST API Integrations</li>
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="tab-goals">
+                        <ul>
+                            <li>Building intelligent, responsive web platforms for real-world utility.</li>
+                            <li>Mastering scalable microservices and deep AI model deployments.</li>
+                            <li>Contributing to open-source software and high-impact technology projects.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TECHNICAL SKILLS SECTION -->
+    <section class="section skills-section" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CAPABILITIES</span>
+                <h2 class="section-title">Technical Arsenal</h2>
+                <div class="title-bar"></div>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Frontend -->
+                <div class="skill-card glass-panel">
+                    <div class="skill-icon"><i class="fa-brands fa-react"></i></div>
+                    <h3>Frontend Development</h3>
+                    <ul class="skill-list">
+                        <li>React.js & Vite</li>
+                        <li>HTML5 & Modern CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Responsive UI / UX Design</li>
+                    </ul>
+                </div>
+
+                <!-- Backend & Cloud -->
+                <div class="skill-card glass-panel">
+                    <div class="skill-icon"><i class="fa-brands fa-node-js"></i></div>
+                    <h3>Backend & Database</h3>
+                    <ul class="skill-list">
+                        <li>Node.js & Express</li>
+                        <li>Python</li>
+                        <li>Supabase & Firebase</li>
+                        <li>RESTful APIs</li>
+                    </ul>
+                </div>
+
+                <!-- AI & Tools -->
+                <div class="skill-card glass-panel">
+                    <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>AI & Automation</h3>
+                    <ul class="skill-list">
+                        <li>Google Gemini API</li>
+                        <li>n8n Workflow Automation</li>
+                        <li>PDF.js Text Extraction</li>
+                        <li>Git & PowerShell</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FEATURED PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">PORTFOLIO</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="title-bar"></div>
+            </div>
+
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card glass-panel tilt-card">
+                    <div class="project-content">
+                        <span class="project-badge">AI / FULL-STACK PLATFORM</span>
+                        <h3 class="project-title">ACE — AI Career Assistant</h3>
+                        <p class="project-desc">
+                            An all-in-one AI platform unifying job searches, ATS resume analysis, custom interview preparation, career roadmaps, and course discovery into a single interface.
+                        </p>
+                        <div class="project-tech">
                             <span>React.js</span>
-                            <span>Vite</span>
                             <span>Firebase</span>
                             <span>n8n</span>
                             <span>Gemini API</span>
+                            <span>Render</span>
+                            <span>PDF.js</span>
+                        </div>
+                        <div class="project-highlights">
+                            <p><strong>Key Solution:</strong> Solved server-side upload timeouts by designing browser-side PDF text extraction using PDF.js before dispatching structured data to AI workflows.</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Project Card 2 -->
-                    <div class="project-card tilt-card">
-                        <div class="card-glow"></div>
-                        <span class="project-tag">Full-Stack Web App</span>
-                        <h3>Student Leave Management System</h3>
-                        <p>End-to-end leave request tracking system with automated letter generation, real-time status tracking, and role-based access control.</p>
-                        <div class="tech-stack">
+                <!-- Project 2 -->
+                <div class="project-card glass-panel tilt-card">
+                    <div class="project-content">
+                        <span class="project-badge">FULL-STACK WEB APP</span>
+                        <h3 class="project-title">Student Leave Management System</h3>
+                        <p class="project-desc">
+                            A role-based web application streamlining leave applications between students and faculty with real-time tracking and document generation.
+                        </p>
+                        <div class="project-tech">
                             <span>HTML5</span>
                             <span>CSS3</span>
                             <span>JavaScript</span>
                             <span>Node.js</span>
                         </div>
+                        <div class="project-highlights">
+                            <p><strong>Key Features:</strong> Auto-generated leave letter formatters, real-time approval status dashboard (Pending / Approved / Rejected), and responsive admin view.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ACHIEVEMENTS SECTION -->
+    <section class="section achievements-section" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">MILESTONES</span>
+                <h2 class="section-title">Achievements & Activities</h2>
+                <div class="title-bar"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item glass-panel">
+                    <div class="timeline-marker"><i class="fa-solid fa-star"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">HackerRank Milestone</span>
+                        <h3>Earned 3rd Star in C Language</h3>
+                        <p>
+                            Strengthened core programming fundamentals, memory management, and low-level logic building vital for building robust systems.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item glass-panel">
+                    <div class="timeline-marker"><i class="fa-solid fa-certificate"></i></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Professional Growth</span>
+                        <h3>2-Day LinkedIn Workshop</h3>
+                        <p>
+                            Participated in an intensive professional development workshop hosted at Sri Venkatesa Perumal College of Engineering & Technology to master networking and personal branding.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CONNECT</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="title-bar"></div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info glass-panel">
+                    <h3>Let's collaborate on your next big idea!</h3>
+                    <p>Open for internships, entry-level developer roles, and technical collaborations.</p>
+                    
+                    <div class="info-list">
+                        <div class="info-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Tirupati, Andhra Pradesh, India</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>B.Tech CSE (Artificial Intelligence)</span>
+                        </div>
                     </div>
 
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com" target="_blank" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://hackerrank.com" target="_blank" class="social-btn"><i class="fa-solid fa-code"></i></a>
+                    </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- SKILLS WINDOW -->
-        <section class="glass-window draggable-window" id="window-skills">
-            <div class="window-header">
-                <div class="window-controls">
-                    <span class="dot close"></span>
-                    <span class="dot minimize"></span>
-                    <span class="dot maximize"></span>
-                </div>
-                <div class="window-title">technical_skills.json</div>
-            </div>
-            <div class="window-content">
-                <h2>Technical Arsenal</h2>
-                <div class="skills-category">
-                    <h4>Languages & Frameworks</h4>
-                    <div class="skill-pills">
-                        <span class="pill">C Language</span>
-                        <span class="pill">Python</span>
-                        <span class="pill">JavaScript (ES6+)</span>
-                        <span class="pill">React.js</span>
-                        <span class="pill">Node.js</span>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h4>Cloud & Backend</h4>
-                    <div class="skill-pills">
-                        <span class="pill">Firebase</span>
-                        <span class="pill">Supabase</span>
-                        <span class="pill">REST APIs</span>
-                        <span class="pill">n8n Automation</span>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h4>Tools & Systems</h4>
-                    <div class="skill-pills">
-                        <span class="pill">Git & GitHub</span>
-                        <span class="pill">VS Code</span>
-                        <span class="pill">PowerShell</span>
-                        <span class="pill">Vercel</span>
-                    </div>
+                <div class="contact-form glass-panel">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Send Message <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ACHIEVEMENTS WINDOW -->
-        <section class="glass-window draggable-window" id="window-achievements">
-            <div class="window-header">
-                <div class="window-controls">
-                    <span class="dot close"></span>
-                    <span class="dot minimize"></span>
-                    <span class="dot maximize"></span>
-                </div>
-                <div class="window-title">achievements_log.key</div>
-            </div>
-            <div class="window-content">
-                <h2>Achievements & Events</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="timeline-badge">⭐ HackerRank</span>
-                        <h4>Earned 3rd Star in C Language</h4>
-                        <p>Strengthened core programming fundamentals, memory management, and low-level logic building.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="timeline-badge">📜 Workshop</span>
-                        <h4>2-Day LinkedIn Professional Workshop</h4>
-                        <p>Organized by SVPP College of Engineering & Technology; focused on personal branding and networking.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 V Chiradeep. Crafted with Vanilla HTML/CSS/JS & GSAP animations.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
